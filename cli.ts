@@ -75,8 +75,6 @@ if (args.help) {
 }
 
 // setup working directory
-// for debug
-//const workDir = path.join(Deno.cwd(), "tmp");
 const workDir = await Deno.makeTempDir({ prefix: "lhex-" });
 await ensureDir(workDir);
 const mountPoint = path.join(workDir, "mnt/lhex");
@@ -369,12 +367,6 @@ try {
       throw err;
     });
   }));
-
-  // filelist.forEach((file) => {
-  //   const origPath = path.join(mountPoint, file);
-  //   const destPath = path.join(targetDir, "system", file);
-  //   copySync(origPath, destPath);
-  // });
 
   kia_copy.succeed("Copied libhoudini");
 
